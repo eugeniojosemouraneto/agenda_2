@@ -72,4 +72,6 @@ Git e GitHub
     # configurar o gitignore para o git ignorar
     git init .
 
+    git add . (Adiciona todas as modificações feitas)
 
+    git commit -m 'descricao da modificações'
