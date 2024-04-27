@@ -41,6 +41,9 @@ PIP
 
 Django
 
+    python manage.py makemigrations
+    python manage.py migrate
+
     django-admin help (mostrar os comandos)
 
     pip install django (instalar o django)
