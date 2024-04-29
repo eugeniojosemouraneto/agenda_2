@@ -29,9 +29,9 @@ class Movimentacao(models.Model):
 
     nome = models.CharField(max_length = 100)
 
-    hora = models.TimeField(default = timezone.now().time)
+    hora = models.TimeField(default = timezone.now().time())
 
-    data = models.DateField()
+    data = models.DateField(default = timezone.now().date())
     
     categoria = models.ForeignKey(
         Categoria,

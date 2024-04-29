@@ -1,1 +1,43 @@
 {% extends "global/base.html" %}
+
+{% block titulo_pagina %}
+<div class="cabecalho_pagina">
+    <h4>{{ titulo }}</h4>
+    <h6>{{ dia_hoje }}</h6>
+</div>
+{% endblock titulo_pagina %}
+
+{% block corpo_pagina %}
+<div class = "corpo_secundario">
+    <div class = "responsive-table">
+        <table class = "tarefas-table">
+            <caption class = "table-caption">
+                Tarefas do mês
+            </caption>
+            <thead>
+                <tr class = "table-row table-row-header">
+                    <th class = "table-header">Nome</th>
+                    <th class = "table-header">Data</th>
+                    <th class = "table-header">Categoria</th>
+                    <th class = "table-header">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tarefa in tarefas %}
+                <tr class = "table-row">
+                    <td class = "table-campo">
+                        <a class = "table-link" href = "{% url "agenda:descricao" tarefa.pk %}">
+                            <p>{{ tarefa.nome }}</p>
+                        </a>
+                    </td>
+                    <td class = "table-campo"><p>{{ tarefa.data }}</p></td>
+                    <td class = "table-campo"><p>{{ tarefa.categoria }}</p></td>
+                    <td class = "table-campo"><p>{{ tarefa.status }}</p></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+</div>
+{% endblock corpo_pagina %}

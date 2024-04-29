@@ -1,0 +1,27 @@
+{% extends "global/base.html" %}
+
+
+{% block titulo_pagina %}
+<div class="cabecalho_pagina">
+    <h4>{{ titulo }}</h4>
+</div>
+{% endblock titulo_pagina %}
+
+{% block corpo_pagina %}
+<div class = "corpo_secundario">
+    <h3 class = "titulo-corpo">Titulo: {{ tarefa.nome }}</h3>
+    <h5 class = "elemento-corpo">Data: {{ tarefa.data }}</h5>
+    <h5 class = "elemento-corpo">Categoria: {{ tarefa.categoria }}</h5>
+    {% if tarefa.status == True %}
+        <h5 class="texto-verde elemento-corpo">Status: Tarefa concluida.</h5>
+    {% else %}
+        <h5 class="texto-vermelho elemento-corpo">Status: Tarefa não concluida.</h5>
+    {% endif %}
+    <div class="quadro-descricao">
+        <h4 class = "elemento-corpo">Lembretes da tarefa:</h4>
+        {% for lembrete in lembretes %}
+            <h5 style = "color: {{ lembrete.tag.cor }} !important;" class = "elemento-corpo">{{ lembrete.tag.nome }}: {{ lembrete.assunto }}<h5>
+        {% endfor %}
+    </div>
+</div>
+{% endblock corpo_pagina %}
