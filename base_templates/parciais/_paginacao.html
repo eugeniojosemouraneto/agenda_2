@@ -1,0 +1,19 @@
+{% if tarefas %}
+  <div class="pagination">
+    <span class="step-links">
+        {% if tarefas.has_previous %}
+            <a href="?page=1&q={{ request.GET.q.strip }}">&laquo; primeiro |  </a>
+            <a href="?page={{ tarefas.previous_page_number }}&q={{ request.GET.q.strip }}"> anterior | </a>
+        {% endif %}
+
+        <span class="current">
+            * Pagina: {{ tarefas.number }} de {{ tarefas.paginator.num_pages }}. *
+        </span>
+
+        {% if tarefas.has_next %}
+            <a href="?page={{ tarefas.next_page_number }}&q={{ request.GET.q.strip }}"> | proximo </a>
+            <a href="?page={{ tarefas.paginator.num_pages }}&q={{ request.GET.q.strip }}">  | ultimo &raquo;</a>
+        {% endif %}
+    </span>
+  </div>
+{% endif %}
