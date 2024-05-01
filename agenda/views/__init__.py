@@ -1,2 +1,2 @@
-from .Tarefa import *
+from ._crud import *
 from .home import *

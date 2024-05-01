@@ -4,4 +4,31 @@ Super usuarios
     Username: Eugenio
     Password: moura2013
 
-    
+
+-------------------------------------------------------------------------------------------------
+teste de model de dependencia de tarefas
+class Adjacencias(models.Model):
+
+    # id_tarefas, lembrese que este campo obrigatoriamente para qualquer model é >= 1
+    # id_tarefas => 1 -> 2, 2-> 3, 3 -> 4, 5 -> 6
+    #
+    # dependencias =>
+    #
+    #   id_tarefa[1] = 0
+    #   id_tarefa[2] = 1
+    #   id_tarefa[3] = 2
+    #   id_tarefa[4] = 3
+    #   id_tarefa[5] = 0
+    #   id_tarefa[6] = 1
+
+    class Meta:
+
+        verbose_name = 'Adjacencia'
+
+        verbose_name_plural = 'Adjacencias'
+
+    origem:int
+
+    destino:int
+
+    dependencias:int

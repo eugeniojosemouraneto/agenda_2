@@ -1,0 +1,65 @@
+{% extends "global/base.html" %}
+
+{% block titulo_pagina %}
+    <div class = "cabecalho_pagina">
+        <h4>{{ titulo }}</h4>
+    </div>
+{% endblock titulo_pagina %}
+
+{% block corpo_pagina %}
+    <div class = "corpo_secundario">
+            <div class = "texto-titulo">
+                <h1>{{ titulo }}</h1>
+            </div>
+            {% if pagina != 'descricao' %}
+                <div class = "card text-center">
+                    <div class = "card-header">
+                        <ul class = "nav nav-pills card-header-pills">
+                            <li class = "nav-item">
+                                {% if pagina == 'tarefa' %}
+                                    <a class = "nav-link action" aria-current = "true" href = "{% url "agenda:cadastro-tarefa" %}">Tarefa</a>
+                                {% else %}
+                                    <a style = "color: var(--preto) !important;" class = "nav-link" href = "{% url "agenda:cadastro-tarefa" %}">Tarefa</a>
+                                {% endif %}
+                            </li>
+                            <li class="nav-item">
+                                {% if pagina == 'categoria' %}
+                                    <a class = "nav-link action" aria-current = "true" href = "{% url "agenda:cadastro-categoria" %}">Categoria</a>
+                                {% else %}
+                                    <a style = "color: var(--preto) !important;" class = "nav-link" href = "{% url "agenda:cadastro-categoria" %}">Categoria</a>
+                                {% endif %}
+                            </li>
+                            <li class="nav-item">
+                                {% if pagina == 'tag' %}
+                                    <a class = "nav-link action" aria-current = "true" href = "{% url "agenda:cadastro-tag" %}">Tag</a>
+                                {% else %}
+                                    <a style = "color: var(--preto) !important;" class="nav-link" href = "{% url "agenda:cadastro-tag" %}">Tag</a>
+                                {% endif %}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            {% endif %}
+            <div class = "card-body">
+                <form 
+                    action=""
+                    method="post"
+                    enctype="multipart/form-data"
+                >
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <div class = "form-group">
+                            <label class = "form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                            {{ field }}
+                        </div>
+                    {% endfor %}
+                    <div class = "form-content">
+                        <div class = "form-group">
+                            <button class = "btn" type = "submit">Enviar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>    
+        </div>
+    </div>
+{% endblock corpo_pagina %}

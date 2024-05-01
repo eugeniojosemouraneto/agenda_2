@@ -51,6 +51,15 @@ class Tarefa(models.Model):
             data__month=mes
         ).order_by('categoria')
     
+    @classmethod
+    def get_tarefa_categoria(cls, id_tarefa, visi:bool = True):
+
+        return cls.objects.filter(
+            visibilidade = visi,
+            pk = id_tarefa
+        ).order_by('data', 'categoria')
+    
+    
     def deletar_tarefa(self):
 
         self.visibilidade = False
@@ -119,3 +128,10 @@ class Descricao(models.Model):
 
     def __str__(self) -> str:
         return self.tag.nome # type: ignore
+    
+    @classmethod
+    def get_descricoes(cls, id_tarefa:int):
+        
+        return cls.objects.filter(
+            tarefa = id_tarefa
+        )

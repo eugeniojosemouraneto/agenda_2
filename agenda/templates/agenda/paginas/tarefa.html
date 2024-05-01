@@ -8,7 +8,17 @@
 {% endblock titulo_pagina %}
 
 {% block corpo_pagina %}
+<div class = "menu-lateral">
+    <h2 style="margin-left: 15px"><i class="bi bi-map"></i> Guia</h2>
+    <ol class="list-group list-group-numbered">
+        <a style = "color: #284B63 !important; font-size: 1.6rem; margin-left: 20px;" href = "{% url "agenda:cadastro-descricao" tarefa.pk %}"><i class="bi bi-caret-right-fill"></i>Adicionar descrição</a>
+        <a style = "color: #284B63 !important; font-size: 1.6rem; margin-left: 20px;" href = "{% url "agenda:home" %}"><i class="bi bi-caret-right-fill"></i>Alterar tarefa</a>
+        <a style = "color: #284B63 !important; font-size: 1.6rem; margin-left: 20px;" href = "{% url "agenda:cadastro-tag" %}"><i class="bi bi-caret-right-fill"></i>Concluir tarefa</a>
+        <a style = "color: #284B63 !important; font-size: 1.6rem; margin-left: 20px;" href = "{% url "agenda:deletar" tarefa.pk %}"><i class="bi bi-caret-right-fill"></i>Deletar tarefa</a>
+    </ol>
+</div>
 <div class = "corpo_secundario">
+    
     <h3 class = "titulo-corpo">Titulo: {{ tarefa.nome }}</h3>
     <h5 class = "elemento-corpo">Data: {{ tarefa.data }}</h5>
     <h5 class = "elemento-corpo">Categoria: {{ tarefa.categoria }}</h5>

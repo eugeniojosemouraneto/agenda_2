@@ -7,20 +7,15 @@
 <div id="offcanvas" class="offcanvas">
     <div class="offcanvas-header">
         <h3 class="offcanvas-title">Menu</h3>
-        <button id="closeButton" type="button" class="btn-close text-reset" aria-label="Close"><i class="bi bi-x-square"></i></button>
+        <button id="closeButton" type="button" class="btn-close btn-close-white border-white rounded-circle text-reset" aria-label="Close"></button>
     </div>
-
     <div class="offcanvas-body">
-        <hr style = "border-top: 1.5px solid #EAEAEA;">
+        <hr style = "border-top: 0.5px solid #EAEAEA;">
         <h3>Agenda</h3>
-        <nav class="nav nav-pills flex-column">
-            <ul>
-                <a class="link-header" href="{% url 'agenda:home' %}">Menssal</a>
-            </ul>
-            <ul>
-                
-            </ul>
-        </nav>
+        <ol class="list-group list-group-numbered">
+            <a class="list-group-item link-header" href="{% url 'agenda:home' %}">Mensal</a>
+            <a class="list-group-item link-header" href="{% url 'agenda:cadastro-tarefa' %}">Cadastro</a>
+        </ol>
     </div>
 </div>
 <script>
