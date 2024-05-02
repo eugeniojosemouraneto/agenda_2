@@ -1,6 +1,7 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
-from django.contrib.auth.models import User
+
 
 class Categoria(models.Model):
 
@@ -30,6 +31,8 @@ class Tarefa(models.Model):
 
     data = models.DateField(default = timezone.now().date())
 
+    mes = models.IntegerField(default = 0)
+
     hora = models.TimeField(default = timezone.now().time())
 
     categoria = models.ForeignKey(
@@ -44,12 +47,12 @@ class Tarefa(models.Model):
     status = models.BooleanField(default = False)
 
     @classmethod
-    def atividades_do_mes(cls, mes:int):
+    def atividades_do_mes(cls, _mes:int, visi:bool = True):
         
         return cls.objects.filter(
-            visibilidade=True,
-            data__month=mes
-        ).order_by('categoria')
+            visibilidade=visi,
+            mes=_mes
+        ).order_by('data', 'categoria')
     
     @classmethod
     def get_tarefa_categoria(cls, id_tarefa, visi:bool = True):
@@ -57,7 +60,7 @@ class Tarefa(models.Model):
         return cls.objects.filter(
             visibilidade = visi,
             pk = id_tarefa
-        ).order_by('data', 'categoria')
+        ).order_by('categoria')
     
     
     def deletar_tarefa(self):

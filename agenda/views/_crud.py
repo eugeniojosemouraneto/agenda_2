@@ -197,3 +197,17 @@ def remover_tarefa(request, id_tarefa:int):
     tarefa.save()
 
     return redirect('agenda:home')
+
+def concluir_tarefa(request, id_tarefa:int):
+
+    tarefa = get_object_or_404(
+        Tarefa.objects.filter(
+            pk = id_tarefa
+        ),
+    )
+
+    tarefa.status = True
+
+    tarefa.save()
+
+    return redirect('agenda:descricao', id_tarefa)

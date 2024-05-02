@@ -32,6 +32,7 @@ class Tarefa_form(ModelForm):
             'nome',
             'data',
             'categoria',
+            'mes',
         )
 
         widgets = {

@@ -95,13 +95,14 @@ body {
 }
 
 .menu-lateral {
-  margin: calc(var(--espaço) * 3) auto;
+  margin: calc(var(--espaço) * 5);
   margin-left: calc(var(--espaço-medio) * 5);
-  padding: calc(var(--espaço) * 2) auto;
+  padding: var(--espaço);
   max-width: var(--largura-pagina-secundarial);
   float: left;
   display: inline-block;
-  border-left: 1px solid var(--azul);
+  border-left: 0.2px solid var(--azul);
+
 }
 
 .corpo_secundario {

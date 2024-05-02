@@ -8,9 +8,9 @@ import locale
 locale.setlocale(locale.LC_TIME, 'pt_BR.UTF-8')
 
 def home(request):
-    dia_hoje = datetime.now().strftime("%A, %d/%m/%Y")
-    # int(datetime.now().strftime("%m"))
-    tarefas = Tarefa.atividades_do_mes(4)
+    dia_hoje = datetime.now().strftime("%d/%m/%Y")
+
+    tarefas = Tarefa.atividades_do_mes(int(datetime.now().strftime("%m")))
 
     context = {
         'titulo'   : 'Agenda mensal',

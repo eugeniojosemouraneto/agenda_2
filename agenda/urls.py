@@ -12,6 +12,7 @@ urlpatterns = [
     path('cadastro/descricao/', cadastro_descricao, name = 'cadastro-descricao-form'),
     path('tarefa/<int:id_tarefa>/descricao/', descricao_tarefa, name = 'descricao'),
     path('tarefa/<int:id_tarefa>/deletar/', remover_tarefa, name = 'deletar'), # type: ignore
+    path('tarefa/<int:id_tarefa>/concluida/', concluir_tarefa, name = 'concluir-tarefa'), # type: ignore
     path('', home, name = 'home'),
 ]
 # path('tarefa/<int:id_tarefa>/alteracao/', alteracao_tarefa, name = 'alteracao'),
