@@ -6,6 +6,7 @@ app_name = 'agenda'
 
 urlpatterns = [
     path('tarefa/cadastro/', cadastro_tarefa, name = 'cadastro-tarefa'),
+    path('tarefa/<int:id_tarefa>/alteracao/', alteracao_tarefa, name = 'alteracao-tarefa'),
     path('categoria/cadastro/', cadastro_categoria, name = 'cadastro-categoria'),
     path('tag/cadastro/', cadastro_tag, name = 'cadastro-tag'),
     path('cadastro/<int:id_tarefa>/descricao/', cadastro_descricao, name = 'cadastro-descricao'),
@@ -15,4 +16,3 @@ urlpatterns = [
     path('tarefa/<int:id_tarefa>/concluida/', concluir_tarefa, name = 'concluir-tarefa'), # type: ignore
     path('', home, name = 'home'),
 ]
-# path('tarefa/<int:id_tarefa>/alteracao/', alteracao_tarefa, name = 'alteracao'),

@@ -13,7 +13,7 @@
     <h2 style="margin-left: 15px"><i class="bi bi-map"></i> Guia</h2>
     <ol class="list-group list-group-numbered">
         <a style = "color: #284B63 !important; font-size: 1.6rem; margin-left: 20px;" href = "{% url "agenda:cadastro-descricao" tarefa.pk %}"><i class="bi bi-caret-right-fill"></i>Adicionar descrição</a>
-        <a style = "color: #284B63 !important; font-size: 1.6rem; margin-left: 20px;" href = "{% url "agenda:home" %}"><i class="bi bi-caret-right-fill"></i>Alterar tarefa</a>
+        <a style = "color: #284B63 !important; font-size: 1.6rem; margin-left: 20px;" href = "{% url "agenda:alteracao-tarefa" tarefa.pk %}"><i class="bi bi-caret-right-fill"></i>Alterar tarefa</a>
         <a style = "color: #284B63 !important; font-size: 1.6rem; margin-left: 20px;" href = "{% url "agenda:concluir-tarefa" tarefa.pk %}"><i class="bi bi-caret-right-fill"></i>Concluir tarefa</a>
         <a style = "color: #284B63 !important; font-size: 1.6rem; margin-left: 20px;" href = "{% url "agenda:deletar" tarefa.pk %}"><i class="bi bi-caret-right-fill"></i>Deletar tarefa</a>
     </ol>

@@ -138,3 +138,51 @@ class Descricao(models.Model):
         return cls.objects.filter(
             tarefa = id_tarefa
         )
+
+
+class Ciclo(models.Model):
+
+    class Meta:
+
+        verbose_name = 'Ciclo'
+
+        verbose_name_plural = 'Ciclos'
+
+    nome = models.CharField(max_length = 100)
+
+    tempo_disponivel_semana = models.IntegerField(default = 1)
+
+    def __str__(self) -> str:
+        
+        return self.nome
+
+
+class Elemento_ciclo(models.Model):
+
+    class Meta:
+
+        verbose_name = 'Elemento de ciclo'
+
+        verbose_name_plural = 'Elementos de clico'
+
+        ordering = ['categoria__nome', 'ciclo__pk']
+
+    horas_categoria = models.IntegerField(default = 0)
+
+    horas_cumpridas = models.IntegerField(default = 0)
+
+    categoria = models.ForeignKey(
+        Categoria,
+        on_delete = models.SET_NULL,
+        blank = True,
+        null = True
+    )
+
+    dificuldade = models.IntegerField(default = 1)
+
+    ciclo = models.ForeignKey(
+        Ciclo,
+        on_delete = models.SET_NULL,
+        blank = True,
+        null = True
+    )

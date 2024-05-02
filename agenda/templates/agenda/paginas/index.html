@@ -9,6 +9,26 @@
 
 {% block corpo_pagina %}
     <div class = "corpo_secundario">
+        <div class = "card text-center">
+            <div class = "card-header">
+                <ul class = "nav nav-pills card-header-pills">
+                    <li class = "nav-item">
+                        {% if pagina == 'mensal' %}
+                            <a class = "nav-link action" aria-current = "true" href = "{% url "agenda:cadastro-tarefa" %}">Agenda mensal</a>
+                        {% else %}
+                            <a style = "color: var(--preto) !important;" class = "nav-link" href = "{% url "agenda:cadastro-tarefa" %}">Agenda mensal</a>
+                        {% endif %}
+                    </li>
+                    <li class="nav-item">
+                        {% if pagina == 'semanal' %}
+                            <a class = "nav-link action" aria-current = "true" href = "{% url "agenda:cadastro-categoria" %}">Agenda semanal</a>
+                        {% else %}
+                            <a style = "color: var(--preto) !important;" class = "nav-link" href = "{% url "agenda:cadastro-categoria" %}">Agenda semanal</a>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+        </div>
         <div class = "responsive-table">
             <table class = "tarefas-table">
                 <h3 class = "table-caption">

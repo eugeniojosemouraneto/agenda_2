@@ -14,6 +14,7 @@ def home(request):
 
     context = {
         'titulo'   : 'Agenda mensal',
+        'pagina'   : 'mensal',
         'dia_hoje' : f'{dia_hoje[0].upper() + dia_hoje[1:]}',
         'tarefas'  : paginacao_geral(request, tarefas, 20),
     }

@@ -76,3 +76,60 @@ class Descricao_form(ModelForm):
             'assunto',
             'tag',
         )
+
+class Ciclo_form(ModelForm):
+
+    class Meta:
+
+        model = Ciclo
+
+        fields = (
+            'nome',
+            'tempo_disponivel_semana',
+        )
+
+        widgets = {
+            'nome' : forms.TextInput(
+                attrs = {
+                    'class'       : 'form-control',
+                    'placeholder' : 'Digite o nome da categoria',
+                }
+            ),
+            'tempo_disponivel_semana' : forms.NumberInput(
+                attrs = {
+                    'class' : 'form-control',
+                    'placeholder' : 'Digite a quantidade de horas disponivel na sua semana.',
+                }
+            )
+        }
+
+
+class Elemento_ciclo_form(ModelForm):
+
+    class Meta:
+
+        model = Elemento_ciclo
+
+        fields = (
+            'horas_categoria',
+            'categoria',
+            'dificuldade',
+        )
+
+        widgets = {
+            'horas_categoria' : forms.NumberInput(
+                attrs = {
+                    'class'       : 'form-control',
+                }
+            ),
+            'categoria' : forms.Select(
+                attrs = {
+                    'class' : 'form-select',
+                },
+            ),
+            'dificuldade' : forms.NumberInput(
+                attrs = {
+                    'class'       : 'form-control',
+                }
+            ),
+        }

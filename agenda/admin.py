@@ -76,4 +76,30 @@ class Descricao_admin(admin.ModelAdmin):
 
     list_per_page = constantes_aplicacao.QUANT_DADOS_MAXIMOS_PAGINA
 
-    list_max_show_all = constantes_aplicacao.QUANT_PAGINAS_MAXIMAS   
+    list_max_show_all = constantes_aplicacao.QUANT_PAGINAS_MAXIMAS
+
+
+@admin.register(Ciclo)
+class Ciclo_admin(admin.ModelAdmin):
+
+    list_display = 'nome', 'tempo_disponivel_semana',
+
+    search_fields = 'nome',
+
+    list_per_page = constantes_aplicacao.QUANT_DADOS_MAXIMOS_PAGINA
+
+    list_max_show_all = constantes_aplicacao.QUANT_PAGINAS_MAXIMAS
+
+
+@admin.register(Elemento_ciclo)
+class Elemento_ciclo_admin(admin.ModelAdmin):
+
+    list_display = 'ciclo', 'horas_categoria', 'horas_cumpridas', 'categoria', 'dificuldade', 
+
+    search_fields = 'categoria', 'ciclo',
+
+    list_filter = 'categoria', 'ciclo',
+
+    list_per_page = constantes_aplicacao.QUANT_DADOS_MAXIMOS_PAGINA
+
+    list_max_show_all = constantes_aplicacao.QUANT_PAGINAS_MAXIMAS

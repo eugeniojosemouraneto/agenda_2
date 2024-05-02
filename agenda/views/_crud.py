@@ -211,3 +211,55 @@ def concluir_tarefa(request, id_tarefa:int):
     tarefa.save()
 
     return redirect('agenda:descricao', id_tarefa)
+
+def alteracao_tarefa(request, id_tarefa:int):
+
+    tarefa = get_object_or_404(
+        Tarefa,
+        pk = id_tarefa,
+        visibilidade = True
+    )
+    
+    form_action = reverse('agenda:alteracao-tarefa', args = (id_tarefa, ))
+    
+    categorias = Categoria.objects.all().filter()
+
+    if request.method == 'POST':
+    
+        form = Tarefa_form(request.POST, instance = tarefa)
+    
+        context = {
+            'titulo'       : 'Alteracao de tarefa',
+            'categorias'   : categorias,
+            'form'         : form,
+            'pagina'       : 'alteracao',
+            'form_action'  : form_action,
+        }
+
+        if form.is_valid():
+    
+            nova_tarefa = form.save(commit = False)
+    
+            nova_tarefa.save()
+    
+            return redirect('agenda:descricao', nova_tarefa.pk)
+        
+        return render(
+    
+            request,
+            'agenda/paginas/tarefa_form.html',
+            context = context
+        )
+    
+    context = {    
+        'titulo'       : 'Alteração de tarefa',
+        'categorias'   : categorias,
+        'pagina'       : 'alteracao',
+        'form'         : Tarefa_form(instance = tarefa),
+    }
+
+    return render(
+        request,
+        'agenda/paginas/tarefa_form.html',
+        context = context
+    )
