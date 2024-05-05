@@ -25,7 +25,7 @@ class Tarefa(models.Model):
     
         verbose_name_plural = 'Tarefas'
 
-        ordering = ['nome', 'data', 'categoria', 'visibilidade']
+        ordering = ['data', 'categoria', 'visibilidade']
 
     nome = models.CharField(max_length = 100)
 
@@ -150,11 +150,24 @@ class Ciclo(models.Model):
 
     nome = models.CharField(max_length = 100)
 
+    descricao = models.TextField(default = "")
+
     tempo_disponivel_semana = models.IntegerField(default = 1)
 
     def __str__(self) -> str:
         
         return self.nome
+    
+    @classmethod
+    def reiniciar_ciclo(cls, id_ciclo:int):
+
+        elementos = Elemento_ciclo.objects.all().filter(ciclo = id_ciclo)
+
+        for elem in elementos:
+
+            elem.horas_cumpridas = 0
+
+            elem.save()
 
 
 class Elemento_ciclo(models.Model):
@@ -186,3 +199,10 @@ class Elemento_ciclo(models.Model):
         blank = True,
         null = True
     )
+
+    @classmethod
+    def get_categoria(cls, id_ciclo:int):
+
+        return cls.objects.filter(
+            ciclo = id_ciclo
+        )

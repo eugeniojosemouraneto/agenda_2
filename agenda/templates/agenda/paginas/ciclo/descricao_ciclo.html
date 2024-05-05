@@ -1,0 +1,29 @@
+{% extends "global/base.html" %}
+
+
+{% block titulo_pagina %}
+    <div class="cabecalho_pagina">
+        <h4>{{ titulo }}</h4>
+    </div>
+{% endblock titulo_pagina %}
+
+{% block corpo_pagina %}
+    <div class = "menu-lateral">
+        <br>
+        <h2 style="margin-left: 15px"><i class="bi bi-map"></i> Guia</h2>
+        <ol class="list-group list-group-numbered">
+            <a style = "color: #284B63 !important; font-size: 1.6rem; margin-left: 20px;" href = "#"><i class="bi bi-caret-right-fill">Cadastro de categoria</i></a>
+            <a style = "color: #284B63 !important; font-size: 1.6rem; margin-left: 20px;" href = "#"><i class="bi bi-caret-right-fill"></i>Alterar categorias</a>
+        </ol>
+    </div>
+    <div class = "corpo_secundario">
+        <br>
+        {% for cat in categorias %}
+            <h5 class = "subtitulo-corpo">Categoria: {{ cat.categoria.nome }} <i class="bi bi-caret-right-fill"></i></h5>
+            {% for check in cat.horas_categoria %}
+            <i class="bi bi-square"></i>
+            {% endfor %}
+            for
+        {% endfor %}
+    </div>
+{% endblock corpo_pagina %}

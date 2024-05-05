@@ -14,5 +14,7 @@ urlpatterns = [
     path('tarefa/<int:id_tarefa>/descricao/', descricao_tarefa, name = 'descricao'),
     path('tarefa/<int:id_tarefa>/deletar/', remover_tarefa, name = 'deletar'), # type: ignore
     path('tarefa/<int:id_tarefa>/concluida/', concluir_tarefa, name = 'concluir-tarefa'), # type: ignore
+    path('ciclo/<int:id_ciclo>/descricao/', descricao_ciclo, name = 'descricao-ciclo'),
+    path('ciclo/', home_ciclo, name = 'home-ciclo'),
     path('', home, name = 'home'),
 ]

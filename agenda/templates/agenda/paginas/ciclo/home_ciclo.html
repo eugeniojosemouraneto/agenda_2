@@ -1,0 +1,33 @@
+{% extends "global/base.html" %}
+
+{% block titulo_pagina %}
+    <div class="cabecalho_pagina">
+        <h4>{{ titulo }}</h4>
+        <h6>{{ dia_hoje }}</h6>
+    </div>
+{% endblock titulo_pagina %}
+
+{% block corpo_pagina %}
+    <div class = "corpo_secundario">
+        <div class="row">
+            {% for ciclo in ciclos %}
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title">{{ ciclo.nome }}</h5>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-text">{{ ciclo.descricao }}.</h5>
+                            <hr style = "border-top: 0.5px solid #284B63;">
+                            <a style = "color: #284B63 !important; font-size: 1.3rem; margin-left: 20px;" href = "{% url "agenda:descricao-ciclo" ciclo.pk %}">Entrar</a>
+                            <a style = "color: #284B63 !important; font-size: 1.3rem; margin-left: 20px;" href = "#">Configurar ciclo</a>
+                            <a style = "color: #284B63 !important; font-size: 1.3rem; margin-left: 20px;" href = "#">Reiniciar ciclo</a>
+                            <a style = "color: #284B63 !important; font-size: 1.3rem; margin-left: 20px;" href = "#">Deletar ciclo</a>
+                        </div>
+                        
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock corpo_pagina %}

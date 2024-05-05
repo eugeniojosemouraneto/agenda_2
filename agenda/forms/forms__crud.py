@@ -16,7 +16,7 @@ class Categoria_form(ModelForm):
         widgets = {
             'nome' : forms.TextInput(
                 attrs = {
-                    'class' : 'form-control',
+                    'class' : 'texto form-control',
                     'placeholder' : 'Digite o nome da categoria',
                 }
             )
@@ -38,21 +38,26 @@ class Tarefa_form(ModelForm):
         widgets = {
             'nome' : forms.TextInput(
                 attrs = {
-                    'class'       : 'form-control',
+                    'class'       : 'texto form-control',
                     'placeholder' : 'Digite o nome da categoria',
                 }
             ),
             'data': forms.DateInput(
                 attrs = {
-                    'class' : 'form-control',
+                    'class' : 'texto form-control',
                 },
                 format = "%d/%m/%Y",
             ),
             'categoria' : forms.Select(
                 attrs = {
-                    'class' : 'form-select',
+                    'class' : 'texto form-select',
                 },
-            )
+            ),
+            'mes' : forms.NumberInput(
+                attrs = {
+                    'class' : 'texto form-control', 
+                }
+            ),
         }
 
 class Tag_form(ModelForm):
@@ -91,13 +96,13 @@ class Ciclo_form(ModelForm):
         widgets = {
             'nome' : forms.TextInput(
                 attrs = {
-                    'class'       : 'form-control',
+                    'class'       : 'texto form-control',
                     'placeholder' : 'Digite o nome da categoria',
                 }
             ),
             'tempo_disponivel_semana' : forms.NumberInput(
                 attrs = {
-                    'class' : 'form-control',
+                    'class' : 'texto form-control',
                     'placeholder' : 'Digite a quantidade de horas disponivel na sua semana.',
                 }
             )
