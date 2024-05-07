@@ -1,0 +1,87 @@
+@import url('_variaveis.css');
+
+.action {
+    background-color: var(--azul-claro) !important;
+    color: var(--branco) !important;
+    border-radius: 0px 15px 0px 15px;
+  }
+  
+  .texto {
+    font-size: var(--fonte-muito-pequena) !important;
+  }
+  
+  .texto-titulo {
+    padding: var(--espaço);
+  }
+  
+  .nav-item {
+    font-size: var(--fonte-muito-pequena) !important;
+    font-weight: bold !important;
+  }
+  
+  .nav-item-pequeno {
+    font-size: var(--fonte-grande) !important;
+    color: var(--preto);
+  }
+
+  .responsive-table {
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  .table-caption {
+    font-size: var(--fonte-media);
+    font-weight: bold;
+    padding: var(--espaço);
+  }
+
+  .tarefas-table {
+    width: 100%;
+    min-width: var(--tamanho-tabela-minima);
+    border-collapse: collapse;
+  }
+  
+  .table-row {
+    text-align: left;
+    text-overflow: ellipsis;
+    transition: background-color var(--transicao-rapida) ease-in-out;
+  }
+  
+  .table-row:nth-of-type(2n) {
+    background: var(--cinza);
+    box-shadow: inset 0px 6px 6px var(--preto-baixa-opacidade) !important;
+  }
+  
+  .table-row:not(.table-row-header):hover {
+    background: var(--azul);
+    color: var(--branco) !important;
+    
+  }
+  
+  .table-row-header {
+    background: var(--cinza);
+    color: var(--preto);
+    box-shadow: inset 0px 6px 6px var(--preto-baixa-opacidade) !important;
+  }
+  
+  .table-campo,
+  .table-header {
+    padding: var(--espaço);
+    font-size: var(--fonte-pequena);
+  }
+  
+  .table-link {
+    color: var(--preto);
+    transition: color var(--transicao-rapida) ease-in-out;
+    text-decoration: none;
+  }
+  
+  .table-link:hover  p{
+    color: var(--branco);
+  }
+
+
+a {
+  text-decoration: none !important;
+}
+

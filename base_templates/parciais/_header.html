@@ -1,12 +1,12 @@
 {% load static %}
-<div class="header-container">
-    <button id="homeButton" class="botao-header"><h3>Menu</h3></button>
-    <a class="botao-header" href="{% url 'agenda:home' %}"><h3>Home</h3></a>
+<div class = "header-nav">
+    <button id = "botao-home"><h3><i class="bi bi-list"></i></h3></button>
+    <a class="botao-header " href="{% url 'agenda:home' %}"><h3>Home</h3></a>
     <a class="botao-header" href="{% url 'agenda:home' %}"><h3><i class="bi bi-person-circle"></i></h3></a>
 </div>
-<div id="offcanvas" class="offcanvas">
+<div id = "offcanvas" class = "offcanvas">
     <div class="offcanvas-header">
-        <h3 class="offcanvas-title">Menu</h3>
+        <h3 class="offcanvas-titulo">Menu</h3>
         <button id="closeButton" type="button" class="btn-close btn-close-white border-white rounded-circle text-reset" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
@@ -21,13 +21,17 @@
         <ol class="list-group list-group-numbered">
             <a class="list-group-item link-header" href="{% url 'agenda:home-ciclo' %}">Ciclos</a>
         </ol>
+        <hr style = "border-top: 0.5px solid #EAEAEA;">
+        <h3>Finanças</h3>
+        <ol class="list-group list-group-numbered">
+            <a class="list-group-item link-header" href="{% url 'financeiro:home' %}">Financeiro</a>
     </div>
 </div>
+
 <script>
-const homeButton = document.getElementById('homeButton');
+const homeButton = document.getElementById('botao-home');
 const closeButton = document.getElementById('closeButton');
 const offcanvas = document.getElementById('offcanvas');
-const corpo_total = document.getElementById('corpo_total');
 // Adicionar evento de clique para mostrar ou ocultar o offcanvas
 homeButton.addEventListener('click', function() {
     // Alternar a classe 'show' no offcanvas

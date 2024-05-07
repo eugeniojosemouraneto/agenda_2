@@ -2,7 +2,13 @@ from django.shortcuts import render
 
 def home(request):
 
+    context = {
+        'pagina' : 'financeiro',g
+        'titulo' : 'Finanças'
+    }
+
     return render(
         request,
-        'agenda/paginas/index.html',
+        'financas/paginas/index.html',
+        context
     )

@@ -1,0 +1,56 @@
+@import url('_variaveis.css');
+
+.form-wrapper {
+    max-width: 60rem;
+    margin: var(--espaço) auto;
+  }
+  
+  .form-content {
+    margin: var(--espaço) 0;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: var(--espaço);
+  }
+
+  .form-group input,
+  .form-group textarea, 
+  .form-group select {
+    font-size: var(--fonte-pequena) !important;
+  }
+  
+  .form-label {
+    text-align: left !important;
+  }
+  
+  .form-group p {
+    margin: 1em 0;
+  }
+  
+  .form-group .help-text,
+  .form-group .help-text ~ ul {
+    margin: 0;
+    font-size: var(--fonte-pequena);
+    list-style: none;
+  }
+  
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    padding: 1rem;
+    border-radius: var(--raioBorda);
+    border: 1px solid var(--preto-baixa-opacidade);
+  }
+  
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    outline: none;
+    box-shadow: 0 0 5px var(--preto-baixa-opacidade);
+  }
+  
+  .form-group label {
+    font-size: var(--fonte-pequena);
+  }

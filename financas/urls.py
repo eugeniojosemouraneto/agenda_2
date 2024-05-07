@@ -1,8 +1,8 @@
 from django.contrib import admin
 from django.urls import path
-from agenda.views import *
+from financas.views import *
 
-app_name = 'financas'
+app_name = 'financeiro'
 
 urlpatterns = [
     path('', home, name = 'home'),

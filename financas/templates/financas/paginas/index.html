@@ -1,1 +1,67 @@
 {% extends "global/base.html" %}
+
+{% block titulo_pagina %}
+    <div class="cabecalho_pagina">
+        <h4>{{ titulo }}</h4>
+        <h6>{{ dia_hoje }}</h6>
+    </div>
+{% endblock titulo_pagina %}
+
+{% block corpo_pagina %}
+    <div class = "corpo_secundario">
+        <div class = "card text-center">
+            <div class = "card-header">
+                <ul class = "nav nav-pills card-header-pills">
+                    <li class = "nav-item">
+                        {% if pagina == 'financeiro' %}
+                            <a class = "nav-link action" aria-current = "true" href = "{% url "financeiro:home" %}">Finanças</a>
+                        {% else %}
+                            <a style = "color: var(--preto) !important;" class = "nav-link" href = "{% url "financeiro:home" %}">Finanças</a>
+                        {% endif %}
+                    </li>
+                    <li class="nav-item">
+                        {% if pagina == 'cofrinho' %}
+                            <a class = "nav-link action" aria-current = "true" href = "{% url "financeiro:home" %}">Cofrinho</a>
+                        {% else %}
+                            <a style = "color: var(--preto) !important;" class = "nav-link" href = "{% url "financeiro:home" %}">Cofrinho</a>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class = "responsive-table">
+            <table class = "tarefas-table">
+                <h3 class = "table-caption">
+                    Tarefas do mês
+                </h3>
+                <thead>
+                    <tr class = "table-row table-row-header">
+                        <th class = "table-header">Nome</th>
+                        <th class = "table-header">Data</th>
+                        <th class = "table-header">Categoria</th>
+                        <th class = "table-header">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for tarefa in tarefas %}
+                        <tr class="table-row" onclick="window.location='{% url "agenda:descricao" tarefa.pk %}'" style="cursor: pointer;">
+                            <td class="table-campo">
+                                <p>{{ tarefa.nome }}</p>
+                            </td>
+                            <td class="table-campo">
+                                <p>{{ tarefa.data }}</p>
+                            </td>
+                            <td class="table-campo">
+                                <p>{{ tarefa.categoria }}</p>
+                            </td>
+                            <td class="table-campo">
+                                <p>{{ tarefa.status }}</p>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% include "parciais/_paginacao.html" %}
+    </div>
+{% endblock corpo_pagina %}

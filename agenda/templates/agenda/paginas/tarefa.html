@@ -8,31 +8,35 @@
 {% endblock titulo_pagina %}
 
 {% block corpo_pagina %}
-<div class = "menu-lateral">
-    <br>
-    <h2 style="margin-left: 15px"><i class="bi bi-map"></i> Guia</h2>
-    <ol class="list-group list-group-numbered">
-        <a style = "color: #284B63 !important; font-size: 1.6rem; margin-left: 20px;" href = "{% url "agenda:cadastro-descricao" tarefa.pk %}"><i class="bi bi-caret-right-fill"></i>Adicionar descrição</a>
-        <a style = "color: #284B63 !important; font-size: 1.6rem; margin-left: 20px;" href = "{% url "agenda:alteracao-tarefa" tarefa.pk %}"><i class="bi bi-caret-right-fill"></i>Alterar tarefa</a>
-        <a style = "color: #284B63 !important; font-size: 1.6rem; margin-left: 20px;" href = "{% url "agenda:concluir-tarefa" tarefa.pk %}"><i class="bi bi-caret-right-fill"></i>Concluir tarefa</a>
-        <a style = "color: #284B63 !important; font-size: 1.6rem; margin-left: 20px;" href = "{% url "agenda:deletar" tarefa.pk %}"><i class="bi bi-caret-right-fill"></i>Deletar tarefa</a>
-    </ol>
-</div>
+
 <div class = "corpo_secundario">
+    <div class = "menu-lateral">
+        <h2 style="margin-left: 15px"><i class="bi bi-map"></i> Guia</h2>
+        <br>
+        <ol class="list-group list-group-numbered elementos-descricao">
+            <a href = "{% url "agenda:cadastro-descricao" tarefa.pk %}"><i class="bi bi-caret-right-fill"></i>Adicionar descrição</a>
+            <a href = "{% url "agenda:alteracao-tarefa" tarefa.pk %}"><i class="bi bi-caret-right-fill"></i>Alterar tarefa</a>
+            <a href = "{% url "agenda:concluir-tarefa" tarefa.pk %}"><i class="bi bi-caret-right-fill"></i>Concluir tarefa</a>
+            <a href = "{% url "agenda:deletar" tarefa.pk %}"><i class="bi bi-caret-right-fill"></i>Deletar tarefa</a>
+        </ol>
+    </div>
     <br>
-    <h3 class = "titulo-corpo">Titulo: {{ tarefa.nome }}</h3>
-    <h5 class = "elemento-corpo">Data: {{ tarefa.data }}</h5>
-    <h5 class = "elemento-corpo">Categoria: {{ tarefa.categoria }}</h5>
-    {% if tarefa.status == True %}
-        <h5 class="texto-verde elemento-corpo">Status: Tarefa concluida.</h5>
-    {% else %}
-        <h5 class="texto-vermelho elemento-corpo">Status: Tarefa não concluida.</h5>
-    {% endif %}
-    <div class="quadro-descricao">
-        <h4 class = "elemento-corpo">Lembretes da tarefa:</h4>
-        {% for lembrete in lembretes %}
-            <h5 style = "color: {{ lembrete.tag.cor }} !important;" class = "elemento-corpo">{{ lembrete.tag.nome }}: {{ lembrete.assunto }}<h5>
-        {% endfor %}
+    <div class = "corpo-tarefa">
+        <h3 class = "titulo-corpo">Titulo: {{ tarefa.nome }}</h3>
+        <h5 class = "elemento-corpo">Data: {{ tarefa.data }}</h5>
+        <h5 class = "elemento-corpo">Categoria: {{ tarefa.categoria }}</h5>
+        {% if tarefa.status == True %}
+            <h5 style = "color: #126d3b !important; font-weight: bold;" class="elemento-corpo">Status: Tarefa concluida.</h5>
+        {% else %}
+            <h5 style = "color: #A72F1D !important; font-weight: bold;" class="elemento-corpo">Status: Tarefa não concluida.</h5>
+        {% endif %}
+        <br>
+        <div class="quadro-descricao">
+            <h4 class = "elemento-corpo">Lembretes da tarefa:</h4>
+            {% for lembrete in lembretes %}
+                <h5 style = "color: {{ lembrete.tag.cor }} !important;" class = "elemento-corpo">{{ lembrete.tag.nome }}: {{ lembrete.assunto }}<h5>
+            {% endfor %}
+        </div>
     </div>
 </div>
 {% endblock corpo_pagina %}

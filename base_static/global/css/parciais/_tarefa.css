@@ -1,0 +1,32 @@
+@import url('_variaveis.css');
+
+.menu-lateral {
+    padding: var(--espaço);
+    float: right;
+    display: inline-block;
+}
+
+.menu-lateral a {
+    color: var(--azul);
+    font-size: 1.6rem; 
+    margin: var(--espaço-minusculo);
+}
+
+.elemento-corpo {
+    margin: var(--espaço) !important;
+}
+
+.titulo-corpo {
+    margin: var(--espaço);
+    margin-bottom: var(--espaço-medio);
+}
+
+.quadro-descricao {
+    margin: calc(var(--espaço) * 1);
+    color: var(--preto) !important;
+    background-color: var(--branco);
+    border-radius: var(--raioBorda);
+    box-shadow: -2px -6px 6px var(--preto-baixa-opacidade) !important;
+    border: 0.2px solid var(--azul-cinza-baixa-opacidade);
+  }
+  

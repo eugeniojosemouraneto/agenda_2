@@ -1,0 +1,19 @@
+<form 
+                    action=""
+                    method="post"
+                    enctype="multipart/form-data"
+                >
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <div class = "form-group">
+                            <label class = "form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                            {{ field }}
+                        </div>
+                    {% endfor %} 
+                    {% comment %} {{form.as_table }} {% endcomment %}
+                    <div class = "form-content">
+                        <div class = "form-group">
+                            <button class = "btn" type = "submit">Enviar</button>
+                        </div>
+                    </div>
+                </form>
