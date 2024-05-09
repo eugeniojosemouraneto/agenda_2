@@ -44,6 +44,19 @@ body {
     min-height: 190px;
   }
 
+.texto-verde,
+.texto-vermelho {
+  font-weight: bold;
+}
+
+.texto-verde {
+  color: var(--verde-claro) !important;
+}
+
+.texto-vermelho {
+  color: var(--verbelho-argila) !important;
+}
+
 /* 
 =========================================================================================
                                     HEADER
@@ -152,7 +165,9 @@ body {
   .action {
     background-color: var(--azul-claro) !important;
     color: var(--branco) !important;
-    border-radius: 0px 15px 0px 15px;
+    border-radius: 10px 10px 10px 10px;
+    padding: var(--espaço-minusculo);
+    margin: var(--espaço-minusculo);
   }
   
   .texto {
@@ -161,6 +176,19 @@ body {
   
   .texto-titulo {
     padding: var(--espaço);
+  }
+
+  .nav-link-principal {
+    text-decoration: none;
+    color: var(--branco) !important;
+    font-weight: bold;
+  }
+
+
+  .nav-link {
+    text-decoration: none;
+    color: var(--azul-claro) !important;
+    font-weight: bold;
   }
   
   .nav-item {

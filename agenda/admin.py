@@ -18,7 +18,7 @@ class Categoria_admin(admin.ModelAdmin):
 @admin.register(Tarefa)
 class Tarefa_admin(admin.ModelAdmin):
     
-    list_display = 'nome',  'data', 'categoria', 'visibilidade',
+    list_display = 'nome',  'id', 'data', 'categoria', 'visibilidade',
     
     ordering = 'data', 'categoria', 'nome', 'visibilidade',
 

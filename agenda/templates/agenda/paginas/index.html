@@ -14,7 +14,7 @@
                 <ul class = "nav nav-pills card-header-pills">
                     <li class = "nav-item">
                         {% if pagina == 'mensal' %}
-                            <a class = "nav-link action" aria-current = "true" href = "{% url "agenda:cadastro-tarefa" %}">Agenda mensal</a>
+                            <a class = "nav-link-principal action" aria-current = "true" href = "{% url "agenda:cadastro-tarefa" %}">Agenda mensal</a>
                         {% else %}
                             <a style = "color: var(--preto) !important;" class = "nav-link" href = "{% url "agenda:cadastro-tarefa" %}">Agenda mensal</a>
                         {% endif %}
@@ -26,6 +26,14 @@
                             <a style = "color: var(--preto) !important;" class = "nav-link" href = "{% url "agenda:cadastro-categoria" %}">Agenda semanal</a>
                         {% endif %}
                     </li>
+                </ul>
+            </div>
+            <div class = "card-header">
+                <ul class = "nav nav-pills card-header-pills">
+                    <li class = "nav-item">
+                        <a class = "nav-link" href = "{% url "agenda:cadastro-tarefa" %}">Cadastro de tarefa</a>
+                    </li>
+                    
                 </ul>
             </div>
         </div>
@@ -55,7 +63,11 @@
                                 <p>{{ tarefa.categoria }}</p>
                             </td>
                             <td class="table-campo">
-                                <p>{{ tarefa.status }}</p>
+                                {% if tarefa.status == True %}
+                                <p class = "texto-verde">Concluida</p>
+                                {% else %}
+                                    <p class = "texto-vermelho">Não concluida</p>
+                                {% endif %}
                             </td>
                         </tr>
                     {% endfor %}

@@ -3,7 +3,7 @@ from django.shortcuts import render
 def home(request):
 
     context = {
-        'pagina' : 'financeiro',g
+        'pagina' : 'financeiro',
         'titulo' : 'Finanças'
     }
 
