@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-import agenda.constantes_app as constantes_aplicacao
+import project.constantes_app as constantes_aplicacao
 from agenda.models import *
 
 

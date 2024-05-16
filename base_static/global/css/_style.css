@@ -35,7 +35,7 @@ body {
 .corpo_secundario {
     max-width: var(--largura-pagina-principal);
     margin: calc(var(--espaço) * 3) auto;
-    padding: calc(var(--espaço) * 2) auto;
+    padding: calc(var(--espaço) * 4) auto;
     color: var(--preto) !important;
     background-color: var(--branco);
     border-radius: var(--raioBorda);

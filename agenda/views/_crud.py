@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from agenda.constantes_app import *
+from project.constantes_app import *
 from django.urls import reverse
 from datetime import datetime
 from agenda.models import *

@@ -1,6 +1,47 @@
 from datetime import datetime, date
+from typing import Any
 from django.db import models
 from django.utils import timezone
+
+
+class Financeiro(models.Model):
+
+    class Meta:
+
+        verbose_name = 'Financeiro'
+
+    saldo = models.FloatField(default = 0.0)
+
+    cofrinho = models.FloatField(default = 0.0)
+
+    def saque_saldo(self, valor:float) -> bool:
+
+        if self.saldo - valor >= 0.0:
+
+            self.saldo -= valor
+
+            return True
+    
+        return False
+    
+    def deposito_saldo(self, valor:float):
+
+        self.saldo += valor
+
+    def saque_cofrinho(self, valor:float) -> bool:
+
+        if self.cofrinho - valor >= 0.0:
+
+            self.cofrinho -= valor
+
+            return True
+        
+        return False
+    
+    def deposito_cofrinho(self, valor:float):
+
+        self.cofrinho += valor
+
 
 
 class Categoria(models.Model):
@@ -15,24 +56,47 @@ class Categoria(models.Model):
 
     def __str__(self) -> str:
         return self.nome
-    
 
-class Movimentacao(models.Model):
+
+
+class Locais(models.Model):
 
     class Meta:
 
-        verbose_name = 'Movimentacao'
+        verbose_name = 'Local'
 
-        verbose_name_plural = 'Movimentacoes'
-
-        ordering = ['nome', 'data', 'categoria', 'pk']
+        verbose_name_plural = 'Locais'
 
     nome = models.CharField(max_length = 100)
 
-    hora = models.TimeField(default = timezone.now().time())
-
-    data = models.DateField(default = timezone.now().date())
+    def __str__(self) -> str:
+        return self.nome
     
+    @classmethod
+    def get_(cls, _local:str):
+
+        return cls.objects.filter(nome = _local)
+
+
+
+
+
+class Movimentacao_financeiro(models.Model):
+
+    class Meta:
+
+        verbose_name = 'Movimentação das finanças'
+
+        verbose_name_plural = 'Movimentações das finanças'
+
+        ordering = ['data', 'categoria', 'status']
+
+    nome = models.CharField(max_length = 100)
+
+    data = models.DateField()
+
+    valor = models.FloatField()
+
     categoria = models.ForeignKey(
         Categoria,
         on_delete = models.SET_NULL,
@@ -40,51 +104,50 @@ class Movimentacao(models.Model):
         null = True
     )
 
-    visibilidade = models.BooleanField(default = True)
+    mes = models.IntegerField()
 
+    movimentacao = models.BooleanField()
 
-class Saldo(models.Model):
-    
-    class Meta:
+    status = models.BooleanField()
 
-        verbose_name = 'Saldo'
-    
-    saldo = models.FloatField(default = 0.00)
+    local = models.ForeignKey(
+        Locais,
+        on_delete = models.SET_NULL,
+        blank = True,
+        null = True
+    )
 
-    cofrinho = models.FloatField(default = 0.00)
+    def cofinho(self):
 
-    def possivel_saque_saldo(self, valor_retirado:int) -> bool:
-        
-        if(self.saldo - valor_retirado >= 0.00):
+        self.mes = self.data.month
 
-            return True
-        
-        return False
-    
-    def possivel_saque_cofrinho(self, valor:int) -> bool:
+        if self.movimentacao:
 
-        if self.cofrinho - valor >= 0.00:
+            Financeiro.objects.get(pk = 0).deposito_cofrinho(self.valor)
 
-            return True
-        
-        return False
+        else:
 
-    def saque_saldo(self, valor_retirado:int):
+            Financeiro.objects.get(pk = 0).saque_cofrinho(self.valor)
 
-        if self.possivel_saque_saldo(valor_retirado):
+        self.save()
 
-            self.saldo -= valor_retirado
+    def saldo(self):
 
-    def saque_cofrinho(self, valor:int):
+        self.mes = self.data.month
 
-        if self.possivel_saque_cofrinho:
-        
-            self.cofrinho -= valor
+        if self.movimentacao:
 
-    def deposito_saldo(self, valor:int):
+            Financeiro.objects.get(pk = 0).deposito_saldo(self.valor)
 
-        self.saldo += valor
+        else:
 
-    def deposito_cofrinho(self, valor:int):
+            Financeiro.objects.get(pk = 0).saque_saldo(self.valor)
 
-        self.cofrinho += valor    
+        self.save()
+
+    @classmethod
+    def get_movimentacao_apagar(cls, _mes:int):
+
+        return cls.objects.filter(
+            mes = _mes
+        )

@@ -5,5 +5,5 @@ from financas.views import *
 app_name = 'financeiro'
 
 urlpatterns = [
-    path('', home, name = 'home'),
+    path('', dashboad, name = 'dashboad'),
 ]
