@@ -16,6 +16,8 @@ def cadastro_tarefa(request):
     categorias = Categoria.objects.all().filter()
 
     if request.method == 'POST':
+
+        print(11)
     
         form = Tarefa_form(request.POST)
     
@@ -27,7 +29,11 @@ def cadastro_tarefa(request):
             'form_action'  : form_action,
         }
 
+        print(form.is_valid())
+
         if form.is_valid():
+
+            print(22)
     
             nova_tarefa = form.save(commit = False)
     
